@@ -26,7 +26,6 @@ def playlists_submit():
         'title': request.form.get('title'),
         'description': request.form.get('description'),
         'videos': request.form.get('videos').split(),
-        'rating': request.form.get('rating')
     }
     playlist_id = playlists.insert_one(playlist).inserted_id
     return redirect(url_for('playlists_show', playlist_id=playlist_id))
