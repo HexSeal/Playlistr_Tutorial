@@ -10,7 +10,6 @@
         {% for video in playlist.videos %}
             <div class="card"><div class="card-body">
                 <iframe width="420" height="315" src="{{ video }}"></iframe>
-            </div></div>
         {% endfor %}
         <p><a href='/playlists/{{ playlist._id }}/edit'>Edit</a></p>
         <p><form method='POST' action='/playlists/{{ playlist._id }}/delete'>
@@ -19,7 +18,7 @@
         </form></p>
 
         <hr>
-        
+
     <!-- Comment form -->
     {% include 'partials/comment_form.html' %}
 
