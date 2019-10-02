@@ -8,10 +8,6 @@ playlists = db.playlists
 
 app = Flask(__name__)
 
-#playlists = [
-    #  { 'title': 'Cat Videos', 'description': 'Cats acting weird' },
-    # { 'title': '80\'s Music', 'description': 'Don\'t stop believing!' }
-#]
 
 @app.route('/')
 def playlists_index():
@@ -59,3 +55,14 @@ def playlists_update(playlist_id):
         {'_id': ObjectId(playlist_id)},
         {'$set': updated_playlist})
     return redirect(url_for('playlists_show', playlist_id=playlist_id))
+
+# app.py
+...
+@app.route('/playlists/<playlist_id>/delete', methods=['POST'])
+def playlists_delete(playlist_id):
+    """Delete one playlist."""
+    playlists.delete_one({'_id': ObjectId(playlist_id)})
+    return redirect(url_for('playlists_index'))
+
+if __name__ == 'main':
+    app.run()
