@@ -7,7 +7,7 @@
     <div class='col-sm-6 col-sm-offset-3'>
         <h1>{{ playlist.title }}</h1>
         {% if playlist.created_at %}
-        <p class='text-muted'>Created on: {{ playlist.created_at }}</p>
+        <p class='text-muted'>Created on {{ playlist.created_at.strftime('%A, %d %B, %Y') }}
             at {{ playlist.created_at.strftime('%I:%M %p') }}</p>
         {% endif %}
 
@@ -21,7 +21,8 @@
                     <p><form method='POST' action='/playlists/{{ playlist._id }}/delete'>
                     <input type='hidden' name='_method' value='DELETE'>
         <button class='btn btn-primary' type='submit'>Delete</button>
-        </form></p>
+        </form>
+        </p>
 
     <!-- Comment form -->
     {% include 'partials/comment_form.html' %}
@@ -31,10 +32,6 @@
     {% for comment in comments %}
         {% include 'partials/comment.html' %}
     {% endfor %}
-
-
-    </div>
-</div>
 
     </div>
 </div>
